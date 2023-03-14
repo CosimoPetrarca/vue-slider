@@ -1,3 +1,5 @@
+'Use Strict'
+
 /* Struttura Vue */
 const { createApp } = Vue
 
@@ -29,5 +31,24 @@ createApp({
                 }
             ]
         }
-    }
+    },
+
+    methods: {
+        nextImages() {
+          this.activeIndex++;
+           if(this.activeIndex > this.slides.length - 1){
+             this.activeIndex = 0;
+           }
+        },
+        prevImages() {
+          this.activeIndex--;
+          if(this.activeIndex < 0){
+            this.activeIndex = this.slides.length - 1;
+          }          
+        },
+        selectImage(index){
+          console.log(index);
+          this.activeIndex=index;
+        }
+      }
 }).mount('#app')
